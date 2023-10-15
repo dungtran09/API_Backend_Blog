@@ -8,11 +8,11 @@ import {
   Post,
   UseGuards,
 } from '@nestjs/common';
-import PostsService from './posts.service';
-import CreatePostDto from './dto/createPost.dto';
-import UpdatePostDto from './dto/updatePost.dto';
-import JwtAuthenticationGuard from 'src/authentication/jwt-authentication.guard';
 import FindOneParams from 'src/utils/valications/findOneParams.vali';
+import PostsService from '../services/posts.service';
+import JwtAuthenticationGuard from 'src/authentication/guards/jwt-authentication.guard';
+import CreatePostDto from '../dto/createPost.dto';
+import UpdatePostDto from '../dto/updatePost.dto';
 
 @Controller('posts')
 export default class PostsController {

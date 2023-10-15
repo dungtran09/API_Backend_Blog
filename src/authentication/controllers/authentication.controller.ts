@@ -9,12 +9,12 @@ import {
   SerializeOptions,
   UseGuards,
 } from '@nestjs/common';
-import AuthenticationService from './authentication.service';
-import RegisterDto from './dto/register.dto';
-import LocalAuthenticationGuard from './localAuthentication.guard';
-import RequestWidthUser from './requestWidthUser.interface';
-import JwtAuthenticationGuard from './jwt-authentication.guard';
-import ResponseWidthUser from './responseWidthUser.interface';
+import AuthenticationService from '../services/authentication.service';
+import RegisterDto from '../dto/register.dto';
+import LocalAuthenticationGuard from '../guards/localAuthentication.guard';
+import RequestWidthUser from '../interfaces/requestWidthUser.interface';
+import JwtAuthenticationGuard from '../guards/jwt-authentication.guard';
+import ResponseWidthUser from '../interfaces/responseWidthUser.interface';
 
 @Controller('authentication')
 @SerializeOptions({ strategy: 'excludeAll' })
