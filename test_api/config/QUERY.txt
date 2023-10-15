@@ -1,0 +1,1 @@
+totalRatings[gt]=4.5&sort=-price
