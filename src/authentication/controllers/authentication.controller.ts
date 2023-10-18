@@ -15,6 +15,7 @@ import LocalAuthenticationGuard from '../guards/localAuthentication.guard';
 import RequestWidthUser from '../interfaces/requestWidthUser.interface';
 import JwtAuthenticationGuard from '../guards/jwt-authentication.guard';
 import ResponseWidthUser from '../interfaces/responseWidthUser.interface';
+import fs from 'fs';
 
 @Controller('authentication')
 @SerializeOptions({ strategy: 'excludeAll' })
@@ -32,6 +33,16 @@ export default class AuthenticationController {
   async logIn(@Req() request: RequestWidthUser) {
     const user = request.user;
     const cookie = this.authenticationService.getCookieWidthJwtToken(user.id);
+    // save token in to file TOKEN.txt (USING FOR test_api)
+    try {
+      fs.writeFileSync(
+        `${__dirname}/../../../test_api/config/COOKIE.txt`,
+        cookie,
+      );
+      console.log(`Write Reset Cookie Successfully!`);
+    } catch (error) {
+      console.log(error.message);
+    }
     request.res.setHeader('Set-Cookie', cookie);
     user.password = undefined;
     return user;

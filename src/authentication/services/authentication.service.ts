@@ -1,9 +1,9 @@
 import bcrypt from 'bcrypt';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import PostgresErrorCodes from 'src/database/postgresErrorCodes.enum';
+import PostgresErrorCodes from '../../database/postgresErrorCodes';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
-import UsersService from 'src/users/services/users.service';
+import UsersService from '../../users/services/users.service';
 import RegisterDto from '../dto/register.dto';
 import TokenPlayload from '../interfaces/tokenPlayload.interface';
 
@@ -42,6 +42,7 @@ export default class AuthenticationService {
   public async getAuthenticatedUser(email: string, plainTextPassword: string) {
     try {
       const user = await this.usersService.getByEmail(email);
+
       await this.verifyPassword(plainTextPassword, user.password);
       user.password = undefined;
       return user;

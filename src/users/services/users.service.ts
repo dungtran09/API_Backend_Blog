@@ -11,8 +11,9 @@ export default class UsersService {
     private usersRepository: Repository<User>,
   ) {}
 
-  async getAllUser() {
-    return this.usersRepository.find();
+  async getAllUsers() {
+    const users = await this.usersRepository.find();
+    if (users) return this.usersRepository.find();
   }
 
   async getByEmail(email: string) {
@@ -38,7 +39,7 @@ export default class UsersService {
   }
 
   async createUser(userData: CreateUserDto) {
-    const newUser = await this.usersRepository.create(userData);
+    const newUser = this.usersRepository.create(userData);
     await this.usersRepository.save(newUser);
     return newUser;
   }

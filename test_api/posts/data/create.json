@@ -1,5 +1,9 @@
 {
-  "title": "Iphone Pro 128GB 2023",
-  "content": "Hot product",
-  "category": ""
+  "title": "title 1",
+  "content": "content post 1",
+  "categories": [
+    {
+      "id": 1
+    }
+  ]
 }

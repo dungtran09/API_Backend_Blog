@@ -1,5 +1,10 @@
 {
-  "email": "dungtr96@gmail.com",
-  "name": "Tran Dung",
-  "password": "123456789"
+  "email": "ngaynangnhe2@gmail.com",
+  "name": "Dung Tran",
+  "password": "123456789",
+  "address": {
+    "street": "Vinh Son, Vinh Linh",
+    "city": "Ho Xa",
+    "country": "Viet Nam"
+  }
 }

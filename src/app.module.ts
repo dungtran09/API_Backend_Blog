@@ -1,17 +1,19 @@
 import { Module } from '@nestjs/common';
-import { PostsModule } from './posts/posts.module';
 import { ConfigModule } from '@nestjs/config';
 import Joi from 'joi';
-import { DatabaseModule } from './database/database.module';
-import { UsersModule } from './users/users.module';
-import AuthenticationModule from './authentication/authentication.module';
 import { APP_FILTER } from '@nestjs/core';
-import { ExceptionsLongerFilter } from './utils/exceptions/exceptionLongger.filter';
+import { PostsModule } from './posts/posts.module';
+import { UsersModule } from './users/users.module';
+import { CategoriesModule } from './categories/category.module';
+import { DatabaseModule } from './database';
+import AuthenticationModule from './authentication/authentication.module';
+import { ExceptionsLongerFilter } from './utils/exceptions';
 
 @Module({
   imports: [
     PostsModule,
     UsersModule,
+    CategoriesModule,
     ConfigModule.forRoot({
       validationSchema: Joi.object({
         POSTGRES_HOST: Joi.string().required(),

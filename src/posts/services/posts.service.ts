@@ -5,6 +5,7 @@ import Post from '../entities/post.entity';
 import PostNotFoundException from '../exceptions/postNotFound.exception';
 import UpdatePostDto from '../dto/updatePost.dto';
 import CreatePostDto from '../dto/createPost.dto';
+import User from 'src/users/entities/user.entity';
 
 @Injectable()
 export default class PostsService {
@@ -14,11 +15,14 @@ export default class PostsService {
   ) {}
 
   async getAllPost() {
-    return this.postsRepository.find();
+    return this.postsRepository.find({ relations: ['author'] });
   }
 
   async getPostById(id: number) {
-    const post = await this.postsRepository.findOne({ where: { id } });
+    const post = await this.postsRepository.findOne({
+      where: { id },
+      relations: ['author'],
+    });
     if (post) {
       return post;
     }
@@ -30,6 +34,7 @@ export default class PostsService {
     await this.postsRepository.update(id, post);
     const updatedPost = await this.postsRepository.findOne({
       where: { id },
+      relations: ['author'],
     });
     if (updatedPost) {
       return updatedPost;
@@ -37,8 +42,11 @@ export default class PostsService {
     throw new PostNotFoundException(id);
   }
 
-  async createPost(post: CreatePostDto) {
-    const newPost = this.postsRepository.create(post);
+  async createPost(post: CreatePostDto, user: User) {
+    const newPost = this.postsRepository.create({
+      ...post,
+      author: user,
+    });
     await this.postsRepository.save(newPost);
     return newPost;
   }
