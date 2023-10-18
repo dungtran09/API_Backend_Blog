@@ -1,4 +1,4 @@
-name: Tests
+name: Unit-testing
   build:
     runs-on: ubuntu-latest
     steps:
