@@ -1,6 +1,6 @@
 [![Tests](https://github.com/dungtran09/API_Backend_Blog/actions/workflows/tests.yml/badge.svg?branch=API_Backend_Blog%2Ffeat)](https://github.com/dungtran09/API_Backend_Blog/actions/workflows/tests.yml)
 
-### Welcome to Math Utility Project Repository
+### Welcome to my Project Repository
 
 ### You will find the following stuff in this Maven project:
 
